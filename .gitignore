@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+# Node
+node_modules/
+# Env
+.env
+# SASS cache
+.sass-cache/
+.cache/
+# Editor
+.vscode/
