@@ -69,7 +69,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 12,
+            "gap": 20,
             "sticky_details_desktop": true,
             "background_media": "none",
             "background_color": "",
@@ -80,10 +80,10 @@
             "border_opacity": 100,
             "border_color": "",
             "border_radius": 0,
-            "padding-block-start": 16,
-            "padding-block-end": 36,
-            "padding-inline-start": 12,
-            "padding-inline-end": 12
+            "padding-block-start": 24,
+            "padding-block-end": 56,
+            "padding-inline-start": 32,
+            "padding-inline-end": 32
           },
           "blocks": {
             "text_tefwj7": {
@@ -273,11 +273,332 @@
         "desktop_media_position": "left",
         "equal_columns": false,
         "limit_details_width": false,
-        "gap": 8,
+        "gap": 16,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 24,
+        "padding-block-end": 24
+      }
+    },
+    "marquee_quality_strip": {
+      "type": "marquee",
+      "name": "Calidad Vénika",
+      "blocks": {
+        "text_ingenieria_precision": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Calidad Vénika: Ingeniería de Precisión</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "divider_1": {
+          "type": "_divider",
+          "settings": {
+            "thickness": 1,
+            "divider_color": "",
+            "width_percent": 100,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        },
+        "text_diseno_premium": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Diseño Premium de Grado Estético</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "divider_2": {
+          "type": "_divider",
+          "settings": {
+            "thickness": 1,
+            "divider_color": "",
+            "width_percent": 100,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        },
+        "text_garantia_satisfaccion": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Garantía de Satisfacción</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_ingenieria_precision",
+        "divider_1",
+        "text_diseno_premium",
+        "divider_2",
+        "text_garantia_satisfaccion"
+      ],
+      "settings": {
+        "movement_direction": "normal",
+        "background_color": "",
+        "padding-block-start": 32,
+        "padding-block-end": 32,
+        "gap_between_elements": 40
+      }
+    },
+    "faq_confianza": {
+      "type": "section",
+      "name": "FAQ de Confianza",
+      "blocks": {
+        "text_eyebrow_faq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Preguntas Frecuentes</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.75rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_heading_faq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Antes de empezar tu ritual.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 8,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_faq": {
+          "type": "accordion",
+          "settings": {
+            "icon": "plus",
+            "dividers": true,
+            "divider_color": "",
+            "type_preset": "h6",
+            "background_color": "",
+            "text_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "row_seguridad": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "¿Es seguro usar Vénika todos los días en casa?",
+                "open_by_default": true,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_respuesta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Sí. Los niveles de intensidad de microcorriente y EMS están diseñados para uso diario sin supervisión profesional, muy por debajo de los equipos de uso clínico intensivo. Comienza siempre en el nivel más suave y aumenta solo cuando tu piel esté lista.</p>",
+                    "width": "100%"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["text_respuesta"]
+            },
+            "row_resultados": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "¿Cuánto tiempo tarda en notarse algún cambio?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_respuesta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>La piel responde a la repetición, no a la promesa de un solo uso. La mayoría de las rutinas de tonificación facial muestran sus primeros cambios perceptibles con varias semanas de uso constante — Vénika está pensada para ser un hábito, no un atajo.</p>",
+                    "width": "100%"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["text_respuesta"]
+            },
+            "row_contraindicaciones": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "¿Hay alguna contraindicación para su uso?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_respuesta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Si estás embarazada, usas un marcapasos u otro dispositivo médico implantado, tienes epilepsia, o una condición dermatológica activa en la zona de aplicación, consulta a tu médico antes de usar cualquier dispositivo de electroestimulación facial, incluido Vénika.</p>",
+                    "width": "100%"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["text_respuesta"]
+            },
+            "row_cuidado": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "¿Cómo cuido mi dispositivo?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_respuesta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Limpia la superficie con un paño suave ligeramente humedecido después de cada uso. Evita sumergirlo por completo y guárdalo en un lugar seco, alejado de la luz solar directa.</p>",
+                    "width": "100%"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["text_respuesta"]
+            },
+            "row_garantia": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "¿Qué pasa si Vénika no se convierte en parte de mi ritual?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_respuesta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Cuentas con nuestra Garantía de Satisfacción para solicitar cambio o reembolso dentro del plazo establecido. Queremos que la decisión de quedarte con Vénika sea tan clara como sus resultados.</p>",
+                    "width": "100%"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["text_respuesta"]
+            }
+          },
+          "block_order": [
+            "row_seguridad",
+            "row_resultados",
+            "row_contraindicaciones",
+            "row_cuidado",
+            "row_garantia"
+          ]
+        }
+      },
+      "block_order": [
+        "text_eyebrow_faq",
+        "text_heading_faq",
+        "accordion_faq"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "background_media": "none",
+        "background_color": "",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     },
     "product_recommendations_iA6pyd": {
@@ -553,6 +874,8 @@
   },
   "order": [
     "main",
+    "marquee_quality_strip",
+    "faq_confianza",
     "product_recommendations_iA6pyd"
   ]
 }
