@@ -8,6 +8,76 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "hero_venika": {
+      "type": "hero",
+      "name": "Hero Vénika",
+      "blocks": {
+        "jumbo_h1": {
+          "type": "jumbo-text",
+          "settings": {
+            "text": "Resultados visibles desde la primera sesión.",
+            "font": "heading",
+            "alignment": "left",
+            "line_height": "1",
+            "letter_spacing": "normal",
+            "case": "none",
+            "text_effect": "none",
+            "text_color": "#ffffff"
+          }
+        },
+        "text_h2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>La fatiga y las líneas de expresión no piden permiso. Vénika combina microcorriente y EMS para tonificar tu rostro en minutos — sin agujas, sin salir de casa.</p>",
+            "width": "100%",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "text_color": "#ffffff",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "button_cta": {
+          "type": "button",
+          "settings": {
+            "label": "Descubre tu ritual Vénika",
+            "link": "{{ product.url }}",
+            "open_in_new_tab": false,
+            "style_class": "button-custom",
+            "custom_button_background": "#ffffff",
+            "custom_button_text": "#000000",
+            "custom_button_border": "#ffffff",
+            "width": "fit-content",
+            "width_mobile": "fit-content"
+          }
+        }
+      },
+      "block_order": ["jumbo_h1", "text_h2", "button_cta"],
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-end",
+        "gap": 20,
+        "section_width": "full-width",
+        "section_height": "large",
+        "background_color": "",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -873,6 +943,7 @@
     }
   },
   "order": [
+    "hero_venika",
     "main",
     "marquee_quality_strip",
     "faq_confianza",
