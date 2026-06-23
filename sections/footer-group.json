@@ -14,20 +14,25 @@
     "footer_WnX4aJ": {
       "type": "footer",
       "blocks": {
-        "logo_AUYVhn": {
-          "type": "logo",
-          "name": "t:names.logo",
+        "text_GgRKPA": {
+          "type": "text",
+          "name": "t:names.text",
           "settings": {
-            "inverse": false,
-            "font": "heading",
+            "text": "<p>stop</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
             "text_color": "",
-            "unit": "pixel",
-            "percent_width": 100,
-            "pixel_height": 48,
-            "custom_mobile_size": false,
-            "unit_mobile": "percent",
-            "percent_width_mobile": 100,
-            "pixel_height_mobile": 120,
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -180,7 +185,7 @@
         }
       },
       "block_order": [
-        "logo_AUYVhn",
+        "text_GgRKPA",
         "group_EJMKU9",
         "email_signup_t3aAfi"
       ],
