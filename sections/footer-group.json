@@ -249,8 +249,8 @@
         "gap": 24,
         "divider_thickness": 0,
         "background_color": "{{ settings.color_palette.color3 }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 60,
+        "padding-block-end": 60
       }
     }
   },

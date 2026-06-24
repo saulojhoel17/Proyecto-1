@@ -150,8 +150,8 @@
             "border_opacity": 100,
             "border_color": "",
             "border_radius": 0,
-            "padding-block-start": 24,
-            "padding-block-end": 56,
+            "padding-block-start": 60,
+            "padding-block-end": 60,
             "padding-inline-start": 32,
             "padding-inline-end": 32
           },
@@ -346,8 +346,8 @@
         "gap": 16,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 24,
-        "padding-block-end": 24
+        "padding-block-start": 60,
+        "padding-block-end": 60
       }
     },
     "marquee_quality_strip": {
@@ -459,8 +459,8 @@
       "settings": {
         "movement_direction": "normal",
         "background_color": "",
-        "padding-block-start": 32,
-        "padding-block-end": 32,
+        "padding-block-start": 60,
+        "padding-block-end": 60,
         "gap_between_elements": 40
       }
     },
@@ -937,8 +937,8 @@
         "section_width": "full-width",
         "gap": 0,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 1,
-        "padding-block-end": 1
+        "padding-block-start": 60,
+        "padding-block-end": 60
       }
     }
   },
