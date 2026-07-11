@@ -140,5 +140,11 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
-  </body>
+  
+{% comment %}@pp theme 1.0.3{% endcomment %}
+{% comment %}@pp-replace-start{% endcomment %}
+{% render 'pagepilot-assets' %}
+<div class="pp-wrapper pp:@container">{% sections 'pagepilot' %}</div>
+{% comment %}@pp-replace-end{% endcomment %}
+</body>
 </html>

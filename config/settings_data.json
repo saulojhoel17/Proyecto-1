@@ -72,6 +72,10 @@
     "color_palette": {
       "background": "#ffffff",
       "foreground": "#1a1a1a"
+    },
+    "pagepilot": {
+      "dir": "ltr",
+      "theme_version": "1.0.3"
     }
   },
   "presets": {

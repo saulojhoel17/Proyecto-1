@@ -1,0 +1,2245 @@
+{% comment %}
+	@pp blocks/pagepilot-drawer-upsell-carousel 1.2.3
+{% endcomment %}
+
+{% liquid
+	capture properties
+		echo '--padding-top: ' | append: block.settings.padding_top | append: 'px;'
+		echo '--padding-bottom: ' | append: block.settings.padding_bottom | append: 'px;'
+		echo '--padding-left: ' | append: block.settings.padding_left | append: 'px;'
+		echo '--padding-right: ' | append: block.settings.padding_right | append: 'px;'
+		echo '--padding-top-mobile: ' | append: block.settings.padding_top_mobile | append: 'px;'
+		echo '--padding-bottom-mobile: ' | append: block.settings.padding_bottom_mobile | append: 'px;'
+		echo '--padding-left-mobile: ' | append: block.settings.padding_left_mobile | append: 'px;'
+		echo '--padding-right-mobile: ' | append: block.settings.padding_right_mobile | append: 'px;'
+
+		assign margin_top = block.settings.margin_top | times: 2
+		assign margin_bottom = block.settings.margin_bottom | times: 2
+		assign margin_top_mobile = block.settings.margin_top_mobile | times: 2
+		assign margin_bottom_mobile = block.settings.margin_bottom_mobile | times: 2
+		echo '--margin-top: ' | append: margin_top | append: 'px;'
+		echo '--margin-bottom: ' | append: margin_bottom | append: 'px;'
+		echo '--margin-top-mobile: ' | append: margin_top_mobile | append: 'px;'
+		echo '--margin-bottom-mobile: ' | append: margin_bottom_mobile | append: 'px;'
+
+		echo '--background-color: ' | append: block.settings.background_color | append: ';'
+
+		echo '--headline-text-color: ' | append: block.settings.headline_text_color | append: ';'
+		echo '--headline-font-size: ' | append: block.settings.headline_font_size | append: 'px;'
+		echo '--headline-font-size-mobile: ' | append: block.settings.headline_font_size_mobile | append: 'px;'
+		echo '--headline-font-weight: ' | append: block.settings.headline_weight | append: ';'
+
+		if block.settings.headline_line_height == 'custom'
+			echo '--headline-line-height-custom: ' | append: block.settings.headline_line_height_custom | append: 'px;'
+			echo '--headline-line-height-custom-mobile: ' | append: block.settings.headline_line_height_custom_mobile | append: 'px;'
+		endif
+
+		echo '--navigation-icon-size: ' | append: block.settings.navigation_icon_size | append: 'px;'
+		echo '--navigation-color: ' | append: block.settings.navigation_color | append: ';'
+
+		echo '--card-spacing: ' | append: block.settings.card_spacing | append: 'px;'
+		echo '--card-padding: ' | append: block.settings.card_padding | append: 'px;'
+
+		if block.settings.card_border != 'none' and block.settings.card_border_color != blank
+			echo '--card-border-width: ' | append: block.settings.card_border_width | append: 'px;'
+			echo '--card-border-color: ' | append: block.settings.card_border_color | append: ';'
+		endif
+
+		if block.settings.card_background_color != blank
+			echo '--card-background-color: ' | append: block.settings.card_background_color | append: ';'
+		endif
+
+		echo '--image-width: ' | append: block.settings.image_width | append: 'px;'
+		echo '--image-spacing: ' | append: block.settings.image_spacing | append: 'px;'
+		case block.settings.image_ratio
+			when 'adapt'
+				echo '--image-ratio: ' | append: 'auto' | append: ';'
+			when 'square'
+				echo '--image-ratio: ' | append: '1 / 1' | append: ';'
+			when 'portrait'
+				echo '--image-ratio: ' | append: '4 / 5' | append: ';'
+			when 'landscape'
+				echo '--image-ratio: ' | append: '16 / 9' | append: ';'
+		endcase
+
+		echo '--product-title-text-color: ' | append: block.settings.product_title_text_color | append: ';'
+		echo '--product-title-font-size: ' | append: block.settings.product_title_font_size | append: 'px;'
+		echo '--product-title-font-size-mobile: ' | append: block.settings.product_title_font_size_mobile | append: 'px;'
+		echo '--product-title-font-weight: ' | append: block.settings.product_title_weight | append: ';'
+		if block.settings.product_title_line_height == 'custom'
+			echo '--product-title-line-height-custom: ' | append: block.settings.product_title_line_height_custom | append: 'px;'
+			echo '--product-title-line-height-custom-mobile: ' | append: block.settings.product_title_line_height_custom_mobile | append: 'px;'
+		endif
+
+		echo '--product-description-text-color: ' | append: block.settings.product_description_text_color | append: ';'
+		echo '--product-description-font-size: ' | append: block.settings.product_description_font_size | append: 'px;'
+		echo '--product-description-font-size-mobile: ' | append: block.settings.product_description_font_size_mobile | append: 'px;'
+		echo '--product-description-font-weight: ' | append: block.settings.product_description_weight | append: ';'
+		if block.settings.product_description_line_height == 'custom'
+			echo '--product-description-line-height-custom: ' | append: block.settings.product_description_line_height_custom | append: 'px;'
+			echo '--product-description-line-height-custom-mobile: ' | append: block.settings.product_description_line_height_custom_mobile | append: 'px;'
+		endif
+
+		echo '--product-price-compare-at-price-gap: ' | append: block.settings.product_price_compare_at_price_gap | append: 'px;'
+		echo '--product-price-compare-at-price-gap-mobile: ' | append: block.settings.product_price_compare_at_price_gap_mobile | append: 'px;'
+		echo '--product-price-text-color: ' | append: block.settings.product_price_text_color | append: ';'
+		echo '--product-price-font-size: ' | append: block.settings.product_price_font_size | append: 'px;'
+		echo '--product-price-font-size-mobile: ' | append: block.settings.product_price_font_size_mobile | append: 'px;'
+		echo '--product-price-font-weight: ' | append: block.settings.product_price_text_weight | append: ';'
+		echo '--product-price-compare-at-price-text-color: ' | append: block.settings.product_price_compare_at_price_text_color | append: ';'
+		echo '--product-price-compare-at-price-text-weight: ' | append: block.settings.product_price_compare_at_price_text_weight | append: ';'
+
+		echo '--product-option-text-color: ' | append: block.settings.product_option_text_color | append: ';'
+		echo '--product-option-font-size: ' | append: block.settings.product_option_font_size | append: 'px;'
+		echo '--product-option-font-size-mobile: ' | append: block.settings.product_option_font_size_mobile | append: 'px;'
+		echo '--product-option-font-weight: ' | append: block.settings.product_option_weight | append: ';'
+		echo '--product-option-spacing: ' | append: block.settings.product_option_spacing | append: 'px;'
+
+		echo '--product-variant-padding-y: ' | append: block.settings.product_variant_padding_y | append: 'px;'
+		echo '--product-variant-padding-x: ' | append: block.settings.product_variant_padding_x | append: 'px;'
+		assign product_variant_padding_x_double = block.settings.product_variant_padding_x | times: 2
+		echo '--product-variant-padding-x-double: ' | append: product_variant_padding_x_double | append: 'px;'
+		echo '--product-variant-icon-size: ' | append: block.settings.product_variant_icon_size | append: 'px;'
+		echo '--product-variant-icon-color: ' | append: block.settings.product_variant_icon_color | append: ';'
+		echo '--product-variant-text-color: ' | append: block.settings.product_variant_text_color | append: ';'
+		echo '--product-variant-font-size: ' | append: block.settings.product_variant_font_size | append: 'px;'
+		echo '--product-variant-font-size-mobile: ' | append: block.settings.product_variant_font_size_mobile | append: 'px;'
+		echo '--product-variant-font-weight: ' | append: block.settings.product_variant_font_weight | append: ';'
+		echo '--product-variant-background-color: ' | append: block.settings.product_variant_background_color | append: ';'
+		if block.settings.product_variant_border != 'none' and block.settings.product_variant_border_color != blank
+			echo '--product-variant-border-width: ' | append: block.settings.product_variant_border_width | append: 'px;'
+			echo '--product-variant-border-color: ' | append: block.settings.product_variant_border_color | append: ';'
+		endif
+
+		echo '--product-atc-button-padding-x: ' | append: block.settings.product_atc_button_padding_x | append: 'px;'
+		echo '--product-atc-button-padding-y: ' | append: block.settings.product_atc_button_padding_y | append: 'px;'
+		echo '--product-atc-button-text-color: ' | append: block.settings.product_atc_button_text_color | append: ';'
+		echo '--product-atc-button-font-size: ' | append: block.settings.product_atc_button_font_size | append: 'px;'
+		echo '--product-atc-button-font-size-mobile: ' | append: block.settings.product_atc_button_font_size_mobile | append: 'px;'
+		echo '--product-atc-button-font-weight: ' | append: block.settings.product_atc_button_weight | append: ';'
+		echo '--product-atc-button-background-color: ' | append: block.settings.product_atc_button_background_color | append: ';'
+		if block.settings.product_atc_button_border != 'none' and block.settings.product_atc_button_border_color != blank
+			echo '--product-atc-button-border-width: ' | append: block.settings.product_atc_button_border_width | append: 'px;'
+			echo '--product-atc-button-border-color: ' | append: block.settings.product_atc_button_border_color | append: ';'
+		endif
+	endcapture
+%}
+
+{% liquid
+	assign any_upsell_in_cart = false
+
+	assign cart_product_ids = '|'
+	for cart_item in cart.items
+		assign cart_product_ids = cart_product_ids | append: cart_item.product_id | append: '|'
+	endfor
+%}
+
+{% comment %} Container {% endcomment %}
+{% liquid
+	assign container_classes = 'pp-drawer-upsell-carousel pp:grid pp:w-full pp:grid-cols-1'
+
+	if block.settings.custom_class != blank
+		assign container_classes = container_classes | append: ' ' | append: block.settings.custom_class
+	endif
+
+	assign container_classes = container_classes | append: ' pp:pt-(--padding-top-mobile) pp:pr-(--padding-right-mobile) pp:pb-(--padding-bottom-mobile) pp:pl-(--padding-left-mobile)'
+	assign container_classes = container_classes | append: ' pp:@3xl:pt-(--padding-top) pp:@3xl:pr-(--padding-right) pp:@3xl:pb-(--padding-bottom) pp:@3xl:pl-(--padding-left)'
+	assign container_classes = container_classes | append: ' pp:mt-(--margin-top-mobile) pp:mb-(--margin-bottom-mobile) pp:@3xl:mt-(--margin-top) pp:@3xl:mb-(--margin-bottom)'
+	assign container_classes = container_classes | append: ' pp:overflow-hidden pp:bg-(--background-color)'
+
+	capture border_radius
+		render 'pagepilot-border-radius', value: block.settings.border_radius
+	endcapture
+	assign container_classes = container_classes | append: ' ' | append: border_radius
+	assign container_classes = container_classes | append: ' ' | append: block.id
+%}
+
+{% comment %} Headline {% endcomment %}
+{% liquid
+	assign headline_classes = 'pp:text-(length:--headline-font-size-mobile) pp:font-(--headline-font-weight) pp:text-pretty pp:wrap-anywhere pp:text-(--headline-text-color) pp:@3xl:text-(length:--headline-font-size)'
+
+	capture line_height
+		render 'pagepilot-line-height', value: block.settings.headline_line_height, height_property: '--headline-line-height-custom', height_property_mobile: '--headline-line-height-custom-mobile'
+	endcapture
+	assign headline_classes = headline_classes | append: ' ' | append: line_height
+
+	capture text_transform
+		render 'pagepilot-text-transform', value: block.settings.headline_case
+	endcapture
+	assign headline_classes = headline_classes | append: ' ' | append: text_transform
+
+	capture letter_spacing
+		render 'pagepilot-letter-spacing', value: block.settings.headline_letter_spacing
+	endcapture
+	assign headline_classes = headline_classes | append: ' ' | append: letter_spacing
+%}
+
+{% comment %} Navigation {% endcomment %}
+{% liquid
+	assign navigation_classes = 'pp:shrink-0 pp:items-center pp:justify-center pp:gap-2 pp:text-(--navigation-color) pp:[&_svg]:size-(--navigation-icon-size)'
+
+	if block.settings.navigation_show
+		assign navigation_classes = navigation_classes | append: ' pp:flex'
+	else
+		assign navigation_classes = navigation_classes | append: ' pp:hidden pp:@3xl:flex'
+	endif
+
+	if block.settings.navigation_mobile_show
+		assign navigation_classes = navigation_classes | append: ' pp:@3xl:flex'
+	else
+		assign navigation_classes = navigation_classes | append: ' pp:@3xl:hidden'
+	endif
+%}
+
+{% comment %} Slide {% endcomment %}
+{% liquid
+	assign slide_classes = 'pp:flex pp:h-full pp:gap-(--image-spacing) pp:bg-(--card-background-color) pp:p-(--card-padding)'
+
+	case block.settings.card_position_vertical
+		when 'flex-start'
+			assign slide_classes = slide_classes | append: ' pp:items-start'
+		when 'center'
+			assign slide_classes = slide_classes | append: ' pp:items-center'
+		when 'flex-end'
+			assign slide_classes = slide_classes | append: ' pp:items-end'
+	endcase
+
+	capture border
+		render 'pagepilot-border', value: block.settings.card_border, width_property: '--card-border-width', color_property: '--card-border-color'
+	endcapture
+	assign slide_classes = slide_classes | append: ' ' | append: border
+
+	capture border_radius
+		render 'pagepilot-border-radius', value: block.settings.card_border_radius
+	endcapture
+	assign slide_classes = slide_classes | append: ' ' | append: border_radius
+%}
+
+{% comment %} Product Image {% endcomment %}
+{% liquid
+	assign slide_image_classes = 'pp:aspect-(--image-ratio) pp:w-full pp:max-w-(--image-width) pp:shrink-0 pp:object-cover'
+	capture border_radius
+		render 'pagepilot-border-radius', value: block.settings.image_border_radius
+	endcapture
+	assign slide_image_classes = slide_image_classes | append: ' ' | append: border_radius
+%}
+
+{% comment %} Product Title {% endcomment %}
+{% liquid
+	assign product_title_classes = 'pp:text-(length:--product-title-font-size-mobile) pp:font-(--product-title-font-weight) pp:text-pretty pp:wrap-anywhere pp:text-(--product-title-text-color) pp:@3xl:text-(length:--product-title-font-size)'
+	capture line_height
+		render 'pagepilot-line-height', value: block.settings.product_title_line_height, height_property: '--product-title-line-height-custom', height_property_mobile: '--product-title-line-height-custom-mobile'
+	endcapture
+	assign product_title_classes = product_title_classes | append: ' ' | append: line_height
+
+	capture text_transform
+		render 'pagepilot-text-transform', value: block.settings.product_title_case
+	endcapture
+	assign product_title_classes = product_title_classes | append: ' ' | append: text_transform
+
+	capture letter_spacing
+		render 'pagepilot-letter-spacing', value: block.settings.product_title_letter_spacing
+	endcapture
+	assign product_title_classes = product_title_classes | append: ' ' | append: letter_spacing
+%}
+
+{% comment %} Product Description {% endcomment %}
+{% liquid
+	assign product_description_classes = 'pp:text-(length:--product-description-font-size-mobile) pp:font-(--product-description-font-weight) pp:text-(--product-description-text-color) pp:@3xl:text-(length:--product-description-font-size)'
+
+	if block.settings.product_description_show
+		assign product_description_classes = product_description_classes | append: ' pp:block'
+	else
+		assign product_description_classes = product_description_classes | append: ' pp:hidden pp:@3xl:block'
+	endif
+
+	if block.settings.product_description_mobile_show
+		assign product_description_classes = product_description_classes | append: ' pp:@3xl:block'
+	else
+		assign product_description_classes = product_description_classes | append: ' pp:@3xl:hidden'
+	endif
+
+	capture line_height
+		render 'pagepilot-line-height', value: block.settings.product_description_line_height, height_property: '--product-description-line-height-custom', height_property_mobile: '--product-description-line-height-custom-mobile'
+	endcapture
+	assign product_description_classes = product_description_classes | append: ' ' | append: line_height
+
+	capture text_transform
+		render 'pagepilot-text-transform', value: block.settings.product_description_case
+	endcapture
+	assign product_description_classes = product_description_classes | append: ' ' | append: text_transform
+
+	capture letter_spacing
+		render 'pagepilot-letter-spacing', value: block.settings.product_description_letter_spacing
+	endcapture
+	assign product_description_classes = product_description_classes | append: ' ' | append: letter_spacing
+%}
+
+{% comment %} Variants Wrapper {% endcomment %}
+{% liquid
+	assign variants_wrapper_classes = 'pp:grid-cols-2 pp:gap-(--card-spacing)'
+
+	if block.settings.product_variant_show
+		assign variants_wrapper_classes = variants_wrapper_classes | append: ' pp:grid'
+	else
+		assign variants_wrapper_classes = variants_wrapper_classes | append: ' pp:hidden pp:@3xl:grid'
+	endif
+
+	if block.settings.product_variant_mobile_show
+		assign variants_wrapper_classes = variants_wrapper_classes | append: ' pp:@3xl:grid'
+	else
+		assign variants_wrapper_classes = variants_wrapper_classes | append: ' pp:@3xl:hidden'
+	endif
+
+	assign columns = 1
+	assign columns_mobile = 1
+
+	if block.settings.reveal_last_slide
+		assign columns = columns | plus: 0.2
+	endif
+
+	if block.settings.reveal_last_slide_mobile
+		assign columns_mobile = columns_mobile | plus: 0.2
+	endif
+%}
+
+{% comment %} Variants Option Name {% endcomment %}
+{% liquid
+	assign variants_option_name_classes = 'pp:text-(length:--product-option-font-size-mobile) pp:font-(--product-option-font-weight) pp:text-(--product-option-text-color) pp:@3xl:text-(length:--product-option-font-size)'
+
+	capture text_transform
+		render 'pagepilot-text-transform', value: block.settings.product_option_case
+	endcapture
+	assign variants_option_name_classes = variants_option_name_classes | append: ' ' | append: text_transform
+
+	capture letter_spacing
+		render 'pagepilot-letter-spacing', value: block.settings.product_option_letter_spacing
+	endcapture
+	assign variants_option_name_classes = variants_option_name_classes | append: ' ' | append: letter_spacing
+%}
+
+{% comment %} Variants Selector {% endcomment %}
+{% liquid
+	assign variants_selector_classes = 'pp:relative pp:flex pp:w-full pp:cursor-pointer pp:appearance-none pp:items-center pp:justify-center pp:gap-2 pp:bg-(--product-variant-background-color)'
+
+	assign variants_selector_classes = variants_selector_classes | append: ' pp:py-(--product-variant-padding-y)! pp:pr-(--product-variant-padding-x-double)! pp:pl-(--product-variant-padding-x)! pp:leading-none'
+	assign variants_selector_classes = variants_selector_classes | append: ' pp:text-(length:--product-variant-font-size-mobile) pp:font-(--product-variant-font-weight) pp:text-(--product-variant-text-color) pp:@3xl:text-(length:--product-variant-font-size)'
+
+	capture border
+		render 'pagepilot-border', value: block.settings.product_variant_border, width_property: '--product-variant-border-width', color_property: '--product-variant-border-color'
+	endcapture
+	assign variants_selector_classes = variants_selector_classes | append: ' ' | append: border
+
+	capture border_radius
+		render 'pagepilot-border-radius', value: block.settings.product_variant_border_radius
+	endcapture
+	assign variants_selector_classes = variants_selector_classes | append: ' ' | append: border_radius
+
+	capture text_transform
+		render 'pagepilot-text-transform', value: block.settings.product_variant_case
+	endcapture
+	assign variants_selector_classes = variants_selector_classes | append: ' ' | append: text_transform
+
+	capture letter_spacing
+		render 'pagepilot-letter-spacing', value: block.settings.product_variant_letter_spacing
+	endcapture
+	assign variants_selector_classes = variants_selector_classes | append: ' ' | append: letter_spacing
+%}
+
+{% comment %} ATC Button {% endcomment %}
+{% liquid
+	assign atc_button_classes = 'pp:relative pp:w-fit pp:cursor-pointer pp:bg-(--product-atc-button-background-color) pp:px-(--product-atc-button-padding-x)! pp:py-(--product-atc-button-padding-y)! pp:text-(length:--product-atc-button-font-size-mobile) pp:leading-none pp:font-(--product-atc-button-font-weight) pp:text-(--product-atc-button-text-color) pp:@3xl:text-(length:--product-atc-button-font-size)'
+
+	assign atc_button_classes = atc_button_classes | append: ' pp:disabled:opacity-50 pp:disabled:cursor-not-allowed'
+
+	capture border
+		render 'pagepilot-border', value: block.settings.product_atc_button_border, width_property: '--product-atc-button-border-width', color_property: '--product-atc-button-border-color'
+	endcapture
+	assign atc_button_classes = atc_button_classes | append: ' ' | append: border
+
+	capture border_radius
+		render 'pagepilot-border-radius', value: block.settings.product_atc_button_border_radius
+	endcapture
+	assign atc_button_classes = atc_button_classes | append: ' ' | append: border_radius
+
+	capture text_transform
+		render 'pagepilot-text-transform', value: block.settings.product_atc_button_case
+	endcapture
+	assign atc_button_classes = atc_button_classes | append: ' ' | append: text_transform
+
+	capture letter_spacing
+		render 'pagepilot-letter-spacing', value: block.settings.product_atc_button_letter_spacing
+	endcapture
+	assign atc_button_classes = atc_button_classes | append: ' ' | append: letter_spacing
+%}
+
+{% comment %} Phase 1: Collect unique trigger handles from product & collection triggers {% endcomment %}
+{% assign all_trigger_handles = '' %}
+{% assign rendered_product_ids = '' %}
+
+{% for item in cart.items %}
+	{% comment %} Product-based trigger {% endcomment %}
+	{% assign trigger_handle = 'trigger-product-' | append: item.product_id %}
+	{% assign upsell_check = shop.metaobjects.pagepilot_upsell_trigger[trigger_handle] %}
+	{% if upsell_check != blank %}
+		{% assign handle_marker = '|' | append: trigger_handle | append: '|' %}
+		{% unless all_trigger_handles contains handle_marker %}
+			{% assign all_trigger_handles = all_trigger_handles | append: '|' | append: trigger_handle %}
+		{% endunless %}
+	{% endif %}
+
+	{% comment %} Collection-based triggers {% endcomment %}
+	{% for collection in item.product.collections %}
+		{% assign col_trigger_handle = 'trigger-collection-' | append: collection.id %}
+		{% assign col_upsell_check = shop.metaobjects.pagepilot_upsell_trigger[col_trigger_handle] %}
+		{% if col_upsell_check != blank %}
+			{% assign col_handle_marker = '|' | append: col_trigger_handle | append: '|' %}
+			{% unless all_trigger_handles contains col_handle_marker %}
+				{% assign all_trigger_handles = all_trigger_handles | append: '|' | append: col_trigger_handle %}
+			{% endunless %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+
+{% assign all_trigger_handles = all_trigger_handles | append: '|' %}
+{% assign trigger_handles_array = all_trigger_handles | remove_first: '|' | split: '|' %}
+
+{% comment %} Phase 2: Capture upsell slides to check if any exist {% endcomment %}
+{% capture upsell_slides %}
+	{% paginate collections.all.products by 250 %}
+		{% for handle in trigger_handles_array %}
+			{% if handle == blank %}
+				{% continue %}
+			{% endif %}
+
+			{% assign upsell = shop.metaobjects.pagepilot_upsell_trigger[handle] %}
+			{% if upsell == blank %}
+				{% continue %}
+			{% endif %}
+
+			{% assign upsells_array = upsell.upsells.value | parse_json %}
+
+			{% for upsell_item in upsells_array %}
+				{% if upsell_item.enabled %}
+					{% for product_id in upsell_item.upsellProductIds %}
+						{% comment %} Skip duplicate upsell products across triggers {% endcomment %}
+						{% assign pid_marker = '|' | append: product_id | append: '|' %}
+						{% if rendered_product_ids contains pid_marker %}
+							{% continue %}
+						{% endif %}
+						{% assign rendered_product_ids = rendered_product_ids
+							| append: '|'
+							| append: product_id
+						%}
+
+						{% assign numeric_id = product_id | plus: 0 %}
+						{% assign upsell_product = collections.all.products | find: 'id', numeric_id %}
+						{% if upsell_product == blank %}
+							{% continue %}
+						{% endif %}
+						{% if upsell_product.variants.size == 1
+							and upsell_product.variants.first.available == false
+						%}
+							{% continue %}
+						{% endif %}
+						{% unless any_upsell_in_cart %}
+							{% for cart_item in cart.items %}
+								{% if cart_item.product_id == upsell_product.id %}
+									{% assign any_upsell_in_cart = true %}
+									{% break %}
+								{% endif %}
+							{% endfor %}
+						{% endunless %}
+						{% liquid
+							assign upsell_variant = upsell_product.selected_or_first_available_variant
+							assign upsell_form_id = 'DrawerUpsellProductForm-' | append: block.id | append: '-' | append: upsell_product.id
+
+							assign product_id_marker = '|' | append: upsell_product.id | append: '|'
+							assign upsell_product_in_cart = false
+							if cart_product_ids contains product_id_marker
+								assign upsell_product_in_cart = true
+							endif
+						%}
+
+						<div class='swiper-slide'>
+							<div class='{{ slide_classes }}'>
+								<img
+									src='{{ upsell_product.featured_image | image_url: width: 400 }}'
+									width='400'
+									height='400'
+									alt='Upsell product'
+									class='{{ slide_image_classes }}'
+								>
+								<div class='pp:flex pp:flex-col pp:gap-(--card-spacing) pp:flex-1'>
+									<a href='{{ upsell_product.url }}'>
+										<h3 class='{{ product_title_classes }}'>
+											{{ upsell_product.title }}
+										</h3>
+									</a>
+									<p class='{{ product_description_classes }}'>
+										{{ upsell_product.description | strip_html | truncate: 80 }}
+									</p>
+
+									<div class='{{ variants_wrapper_classes }}'>
+										{% unless upsell_product.has_only_default_variant %}
+											<div class='pp:flex pp:flex-col pp:gap-(--product-option-spacing)'>
+												<div class='{{ variants_option_name_classes }}'>
+													{{ upsell_product.options_with_values.first.name }}
+												</div>
+												<div class='pp:relative'>
+													<i
+														data-lucide='chevron-down'
+														class='pp:pointer-events-none pp:absolute pp:top-1/2 pp:right-(--product-variant-padding-x) pp:z-1 pp:size-(--product-variant-icon-size) pp:-translate-y-1/2 pp:text-(--product-variant-icon-color)'
+													></i>
+													<select
+														class='{{ variants_selector_classes }}'
+														data-product-id='{{ upsell_product.id }}'
+														data-block-id='{{ block.id }}'
+													onchange="
+														var form = this.closest('.swiper-slide').querySelector('input[name=id]');
+														if (form) form.value = this.value;
+														var opt = this.options[this.selectedIndex];
+														var btn = this.closest('.swiper-slide').querySelector('button[name=add]');
+														if (btn) {
+															if (btn.dataset.inCart === 'true') {
+																btn.disabled = true;
+																btn.textContent = 'Added';
+															} else if (opt.dataset.available === 'true') {
+																btn.disabled = false;
+																btn.textContent = '{{ block.settings.product_atc_button_text }}';
+															} else {
+																btn.disabled = true;
+																btn.textContent = 'Sold out';
+															}
+														}
+													"
+													>
+														{%- for variant in upsell_product.variants -%}
+															<option
+																value='{{ variant.id }}'
+																data-available='{{ variant.available }}'
+																{% if variant.featured_image %}
+																	data-image='{{ variant.featured_image | image_url: width: 400 }}'
+																{% endif %}
+																{% if variant == upsell_variant %}
+																	selected
+																{% endif %}
+															>
+																{{ variant.title | escape }}
+															</option>
+														{%- endfor -%}
+													</select>
+												</div>
+											</div>
+										{% endunless %}
+									</div>
+
+									<div class='pp:flex pp:flex-wrap pp:items-center pp:justify-between pp:gap-(--card-spacing)'>
+										<div class='pp:flex pp:items-center pp:gap-(--product-price-compare-at-price-gap-mobile) pp:@3xl:gap-(--product-price-compare-at-price-gap)'>
+											<span class='pp:text-(length:--product-price-font-size-mobile) pp:font-(--product-price-font-weight) pp:text-(--product-price-text-color) pp:@3xl:text-(length:--product-price-font-size)'>
+												{{ upsell_product.price | money }}
+											</span>
+											{% if block.settings.product_price_compare_at_price_show
+												and upsell_product.compare_at_price
+													> upsell_product.price
+											%}
+												<span class='pp:text-(length:--product-price-font-size-mobile) pp:font-(--product-price-compare-at-price-text-weight) pp:text-(--product-price-compare-at-price-text-color) pp:line-through pp:@3xl:text-(length:--product-price-font-size)'>
+													{{- upsell_product.compare_at_price | money -}}
+												</span>
+											{% endif %}
+										</div>
+
+										<pagepilot-product-form-component
+											data-section-id='{{ section.id }}'
+											data-product-id='{{ upsell_product.id }}'
+											data-product-url='{{ upsell_product.url }}'
+											on:submit='/handleSubmit'
+											data-quantity-default='1'
+										>
+											<div
+												class='visually-hidden'
+												aria-live='assertive'
+												role='status'
+												aria-atomic='true'
+												ref='liveRegion'
+											></div>
+
+											{%- form 'product',
+												upsell_product,
+												id: upsell_form_id,
+												data-type: 'add-to-cart-form'
+											-%}
+												<input
+													type='hidden'
+													name='id'
+													ref='variantId'
+													value='{{ upsell_variant.id }}'
+												>
+												<input type='hidden' name='quantity' value='1'>
+
+												<pagepilot-add-to-cart-component ref='addToCartButtonContainer'>
+													<button
+														type='submit'
+														name='add'
+														ref='addToCartButton'
+														on:click='/handleClick'
+														class='{{ atc_button_classes }}'
+														data-in-cart='{{ upsell_product_in_cart }}'
+														{% if upsell_product_in_cart or upsell_variant.available == false %}
+															disabled
+														{% endif %}
+													>
+														{% if upsell_product_in_cart %}
+															Added
+														{% elsif upsell_variant.available %}
+															{{ block.settings.product_atc_button_text }}
+														{% else %}
+															Sold out
+														{% endif %}
+													</button>
+												</pagepilot-add-to-cart-component>
+											{%- endform -%}
+										</pagepilot-product-form-component>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% endpaginate %}
+{% endcapture %}
+
+{% assign upsell_slides_stripped = upsell_slides | strip %}
+{% if upsell_slides_stripped != blank %}
+	<pagepilot-carousel
+		id='swiper-{{ block.id }}'
+		{{ block.shopify_attributes }}
+	>
+		<div
+			class='{{ container_classes }}'
+			style='{{ properties }}'
+		>
+			<div class='pp:relative pp:min-w-0 pp:grid pp:grid-cols-1 pp:gap-3'>
+				<div class='pp:flex pp:items-center pp:justify-between'>
+					<div class='{{ headline_classes }}'>
+						{{ block.settings.headline_text }}
+					</div>
+
+					<div class='{{ navigation_classes }}'>
+						<button
+							ref='previous'
+							type='button'
+							class='pp:flex pp:items-center pp:justify-center pp:cursor-pointer'
+						>
+							<i data-lucide='chevron-left'></i>
+						</button>
+						<button
+							ref='next'
+							type='button'
+							class='pp:flex pp:items-center pp:justify-center pp:cursor-pointer'
+						>
+							<i data-lucide='chevron-right'></i>
+						</button>
+					</div>
+				</div>
+
+				<div
+					ref='swiper'
+					class='swiper pp:[&>.swiper-wrapper]:items-center pp:overflow-hidden'
+					data-autoplay='0'
+					data-columns='{{ columns }}'
+					data-columns-mobile='{{ columns_mobile }}'
+					data-gap='{{ block.settings.reveal_last_slide_gap }}'
+					data-gap-mobile='{{ block.settings.reveal_last_slide_gap }}'
+					data-auto-height='false'
+				>
+					<div class='swiper-wrapper'>
+						{{ upsell_slides }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</pagepilot-carousel>
+{% endif %}
+
+{% schema %}
+{
+	"name": "Drawer Upsell Carousel",
+	"class": "pagepilot-block",
+	"settings": [
+		{
+			"type": "range",
+			"id": "autoplay",
+			"label": "Autoplay",
+			"info": "The number of seconds between each slide. 0 to disable.",
+			"min": 0,
+			"max": 10,
+			"step": 1,
+			"unit": "s",
+			"default": 3
+		},
+		{
+			"type": "checkbox",
+			"id": "reveal_last_slide",
+			"label": "Reveal Last Slide",
+			"info": "If enabled, the last slide will be revealed with a half column width",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "reveal_last_slide_mobile",
+			"label": "Mobile Reveal Last Slide",
+			"info": "If enabled, the last slide will be revealed with a half column width",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "reveal_last_slide_gap",
+			"label": "Reveal Last Slide Gap",
+			"min": 0,
+			"max": 30,
+			"step": 1,
+			"unit": "px",
+			"default": 6,
+			"visible_if": "{{ block.settings.reveal_last_slide == true or block.settings.reveal_last_slide_mobile == true }}"
+		},
+		{
+			"type": "header",
+			"content": "Headline"
+		},
+		{
+			"type": "richtext",
+			"id": "headline_text",
+			"label": "Text",
+			"default": "<p>Check out these related products</p>"
+		},
+		{
+			"type": "checkbox",
+			"id": "headline_translate_skip",
+			"label": "Skip AI Translation",
+			"default": false,
+			"info": "If enabled, the text will not be translated by AI."
+		},
+		{
+			"type": "color",
+			"id": "headline_text_color",
+			"label": "Color"
+		},
+		{
+			"type": "range",
+			"id": "headline_font_size",
+			"min": 10,
+			"max": 70,
+			"step": 1,
+			"unit": "px",
+			"label": "Size",
+			"default": 12
+		},
+		{
+			"type": "range",
+			"id": "headline_font_size_mobile",
+			"min": 10,
+			"max": 70,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Size",
+			"default": 12
+		},
+		{
+			"type": "select",
+			"id": "headline_weight",
+			"label": "Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "400"
+		},
+		{
+			"type": "select",
+			"id": "headline_letter_spacing",
+			"label": "Letter Spacing",
+			"options": [
+				{
+					"value": "tight",
+					"label": "Tight"
+				},
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "loose",
+					"label": "Loose"
+				}
+			],
+			"default": "normal"
+		},
+		{
+			"type": "select",
+			"id": "headline_case",
+			"label": "Case",
+			"options": [
+				{
+					"value": "none",
+					"label": "Default"
+				},
+				{
+					"value": "lowercase",
+					"label": "Lowercase"
+				},
+				{
+					"value": "uppercase",
+					"label": "Uppercase"
+				},
+				{
+					"value": "capitalize",
+					"label": "Capitalize"
+				}
+			],
+			"default": "none"
+		},
+		{
+			"type": "select",
+			"id": "headline_line_height",
+			"label": "Line Height",
+			"options": [
+				{
+					"value": "auto",
+					"label": "Auto"
+				},
+				{
+					"value": "custom",
+					"label": "Custom"
+				}
+			],
+			"default": "auto"
+		},
+		{
+			"type": "range",
+			"id": "headline_line_height_custom",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Line Height",
+			"default": 16,
+			"visible_if": "{{ block.settings.headline_line_height == \"custom\" }}"
+		},
+		{
+			"type": "range",
+			"id": "headline_line_height_custom_mobile",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Line Height",
+			"default": 16,
+			"visible_if": "{{ block.settings.headline_line_height == \"custom\" }}"
+		},
+
+		{
+			"type": "header",
+			"content": "Navigation Arrows"
+		},
+		{
+			"type": "checkbox",
+			"id": "navigation_show",
+			"label": "Show Navigation",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "navigation_mobile_show",
+			"label": "Mobile Show Navigation",
+			"default": true
+		},
+		{
+			"type": "color",
+			"id": "navigation_color",
+			"label": "Color",
+			"default": "#7C7C7C",
+			"visible_if": "{{ block.settings.navigation_show == true or block.settings.navigation_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "navigation_icon_size",
+			"label": "Icon size",
+			"min": 14,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 18,
+			"visible_if": "{{ block.settings.navigation_show == true or block.settings.navigation_mobile_show == true }}"
+		},
+
+		{
+			"type": "header",
+			"content": "Card"
+		},
+		{
+			"type": "select",
+			"id": "card_position_vertical",
+			"label": "Position",
+			"options": [
+				{
+					"value": "flex-start",
+					"label": "Top"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "flex-end",
+					"label": "Bottom"
+				}
+			],
+			"default": "center"
+		},
+		{
+			"type": "range",
+			"id": "card_spacing",
+			"label": "Spacing",
+			"min": 0,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"default": 6
+		},
+
+		{
+			"type": "color",
+			"id": "card_background_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "select",
+			"id": "card_border",
+			"label": "Border Style",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "solid",
+					"label": "Solid"
+				},
+				{
+					"value": "dashed",
+					"label": "Dashed"
+				},
+				{
+					"value": "dotted",
+					"label": "Dotted"
+				}
+			],
+			"default": "none"
+		},
+		{
+			"type": "color",
+			"id": "card_border_color",
+			"label": "Border Color",
+			"visible_if": "{{ block.settings.card_border != \"none\" }}"
+		},
+		{
+			"type": "range",
+			"id": "card_border_width",
+			"min": 1,
+			"max": 10,
+			"step": 1,
+			"unit": "px",
+			"label": "Border Thickness",
+			"default": 1,
+			"visible_if": "{{ block.settings.card_border != \"none\" }}"
+		},
+		{
+			"type": "range",
+			"id": "card_border_radius",
+			"label": "Rounded Corners",
+			"min": 0,
+			"max": 100,
+			"step": 10,
+			"unit": "%",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "card_padding",
+			"label": "Padding",
+			"min": 0,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"default": 2
+		},
+		{
+			"type": "header",
+			"content": "Product Image"
+		},
+		{
+			"type": "range",
+			"id": "image_width",
+			"label": "Image Width",
+			"min": 20,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 40
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "Auto"
+				},
+				{
+					"value": "portrait",
+					"label": "Portrait"
+				},
+				{
+					"value": "square",
+					"label": "Square"
+				},
+				{
+					"value": "landscape",
+					"label": "Landscape"
+				}
+			],
+			"default": "adapt",
+			"label": "Aspect Ratio"
+		},
+
+		{
+			"type": "range",
+			"id": "image_border_radius",
+			"label": "Image Rounded Corners",
+			"min": 0,
+			"max": 100,
+			"step": 10,
+			"unit": "%",
+			"default": 100
+		},
+		{
+			"type": "range",
+			"id": "image_spacing",
+			"label": "Image Spacing",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 16
+		},
+		{
+			"type": "header",
+			"content": "Product Title"
+		},
+
+		{
+			"type": "color",
+			"id": "product_title_text_color",
+			"label": "Color"
+		},
+		{
+			"type": "range",
+			"id": "product_title_font_size",
+			"min": 10,
+			"max": 70,
+			"step": 1,
+			"unit": "px",
+			"label": "Size",
+			"default": 12
+		},
+		{
+			"type": "range",
+			"id": "product_title_font_size_mobile",
+			"min": 10,
+			"max": 70,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Size",
+			"default": 12
+		},
+		{
+			"type": "select",
+			"id": "product_title_weight",
+			"label": "Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "400"
+		},
+		{
+			"type": "select",
+			"id": "product_title_letter_spacing",
+			"label": "Letter Spacing",
+			"options": [
+				{
+					"value": "tight",
+					"label": "Tight"
+				},
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "loose",
+					"label": "Loose"
+				}
+			],
+			"default": "normal"
+		},
+		{
+			"type": "select",
+			"id": "product_title_case",
+			"label": "Case",
+			"options": [
+				{
+					"value": "none",
+					"label": "Default"
+				},
+				{
+					"value": "lowercase",
+					"label": "Lowercase"
+				},
+				{
+					"value": "uppercase",
+					"label": "Uppercase"
+				},
+				{
+					"value": "capitalize",
+					"label": "Capitalize"
+				}
+			],
+			"default": "none"
+		},
+		{
+			"type": "select",
+			"id": "product_title_line_height",
+			"label": "Line Height",
+			"options": [
+				{
+					"value": "auto",
+					"label": "Auto"
+				},
+				{
+					"value": "custom",
+					"label": "Custom"
+				}
+			],
+			"default": "auto"
+		},
+		{
+			"type": "range",
+			"id": "product_title_line_height_custom",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Line Height",
+			"default": 16,
+			"visible_if": "{{ block.settings.product_title_line_height == \"custom\" }}"
+		},
+		{
+			"type": "range",
+			"id": "product_title_line_height_custom_mobile",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Line Height",
+			"default": 16,
+			"visible_if": "{{ block.settings.product_title_line_height == \"custom\" }}"
+		},
+
+		{
+			"type": "header",
+			"content": "Product Description"
+		},
+
+		{
+			"type": "checkbox",
+			"id": "product_description_show",
+			"label": "Show",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "product_description_mobile_show",
+			"label": "Mobile Show",
+			"default": true
+		},
+		{
+			"type": "color",
+			"id": "product_description_text_color",
+			"label": "Color",
+
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_description_font_size",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"label": "Size",
+			"default": 12,
+
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_description_font_size_mobile",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Size",
+			"default": 12,
+
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_description_weight",
+			"label": "Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "400",
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_description_letter_spacing",
+			"label": "Letter Spacing",
+			"options": [
+				{
+					"value": "tight",
+					"label": "Tight"
+				},
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "loose",
+					"label": "Loose"
+				}
+			],
+			"default": "normal",
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_description_case",
+			"label": "Case",
+			"options": [
+				{
+					"value": "none",
+					"label": "Default"
+				},
+				{
+					"value": "lowercase",
+					"label": "Lowercase"
+				},
+				{
+					"value": "uppercase",
+					"label": "Uppercase"
+				},
+				{
+					"value": "capitalize",
+					"label": "Capitalize"
+				}
+			],
+			"default": "none",
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_description_line_height",
+			"label": "Line Height",
+			"options": [
+				{
+					"value": "auto",
+					"label": "Auto"
+				},
+				{
+					"value": "custom",
+					"label": "Custom"
+				}
+			],
+			"default": "auto",
+			"visible_if": "{{ block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_description_line_height_custom",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Line Height",
+			"default": 16,
+			"visible_if": "{{ block.settings.product_description_line_height == \"custom\" and block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_description_line_height_custom_mobile",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Line Height",
+			"default": 16,
+			"visible_if": "{{ block.settings.product_description_line_height == \"custom\" and block.settings.product_description_show == true or block.settings.product_description_mobile_show == true }}"
+		},
+
+		{
+			"type": "header",
+			"content": "Product Price"
+		},
+		{
+			"type": "range",
+			"id": "product_price_font_size",
+			"label": "Price Size",
+			"min": 10,
+			"max": 30,
+			"step": 1,
+			"unit": "px",
+			"default": 12
+		},
+		{
+			"type": "range",
+			"id": "product_price_font_size_mobile",
+			"label": "Mobile Price Size",
+			"min": 10,
+			"max": 30,
+			"step": 1,
+			"unit": "px",
+			"default": 12
+		},
+		{
+			"type": "color",
+			"id": "product_price_text_color",
+			"label": "Price Color",
+			"default": "#363636"
+		},
+		{
+			"type": "select",
+			"id": "product_price_text_weight",
+			"label": "Price Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "400"
+		},
+		{
+			"type": "checkbox",
+			"id": "product_price_compare_at_price_show",
+			"label": "Show Compare at Price",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "product_price_compare_at_price_gap",
+			"label": "Compare at Price Gap",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 4,
+			"visible_if": "{{ block.settings.product_price_compare_at_price_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_price_compare_at_price_gap_mobile",
+			"label": "Mobile Compare at Price Gap",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 10,
+			"visible_if": "{{ block.settings.product_price_compare_at_price_show == true }}"
+		},
+		{
+			"type": "color",
+			"id": "product_price_compare_at_price_text_color",
+			"label": "Compare at Price Text Color",
+			"default": "#DD272B",
+			"visible_if": "{{ block.settings.product_price_compare_at_price_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_price_compare_at_price_text_weight",
+			"label": "Compare at Price Text Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "400"
+		},
+
+		{
+			"type": "header",
+			"content": "Product Variants"
+		},
+		{
+			"type": "checkbox",
+			"id": "product_variant_show",
+			"label": "Show",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "product_variant_mobile_show",
+			"label": "Mobile Show",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "product_variant_icon_size",
+			"label": "Icon Size",
+			"min": 10,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 16,
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "color",
+			"id": "product_variant_icon_color",
+			"label": "Icon Color",
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "color",
+			"id": "product_variant_text_color",
+			"label": "Text Color",
+			"default": "#7c7c7c",
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_variant_font_size",
+			"min": 10,
+			"max": 70,
+			"step": 1,
+			"unit": "px",
+			"label": "Size",
+			"default": 14,
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_variant_font_size_mobile",
+			"min": 10,
+			"max": 70,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Size",
+			"default": 14,
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_variant_weight",
+			"label": "Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "400",
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+
+		{
+			"type": "select",
+			"id": "product_variant_letter_spacing",
+			"label": "Letter Spacing",
+			"options": [
+				{
+					"value": "tight",
+					"label": "Tight"
+				},
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "loose",
+					"label": "Loose"
+				}
+			],
+			"default": "normal",
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_variant_case",
+			"label": "Case",
+			"options": [
+				{
+					"value": "none",
+					"label": "Default"
+				},
+				{
+					"value": "lowercase",
+					"label": "Lowercase"
+				},
+				{
+					"value": "uppercase",
+					"label": "Uppercase"
+				},
+				{
+					"value": "capitalize",
+					"label": "Capitalize"
+				}
+			],
+			"default": "none",
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "color",
+			"id": "product_variant_background_color",
+			"label": "Background color",
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_variant_border",
+			"label": "Border Style",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "solid",
+					"label": "Solid"
+				},
+				{
+					"value": "dashed",
+					"label": "Dashed"
+				},
+				{
+					"value": "dotted",
+					"label": "Dotted"
+				}
+			],
+			"default": "solid",
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "color",
+			"id": "product_variant_border_color",
+			"label": "Border Color",
+			"default": "#DFDFDF",
+			"visible_if": "{{ block.settings.product_variant_border != \"none\" and block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_variant_border_width",
+			"min": 1,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Border Thickness",
+			"default": 1,
+			"visible_if": "{{ block.settings.product_variant_border != \"none\" and block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_variant_border_radius",
+			"label": "Rounded Corners",
+			"min": 0,
+			"max": 100,
+			"step": 10,
+			"unit": "%",
+			"default": 30
+		},
+		{
+			"type": "range",
+			"id": "product_variant_padding_y",
+			"label": "Padding Y",
+			"min": 0,
+			"max": 30,
+			"step": 1,
+			"unit": "px",
+			"default": 6,
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_variant_padding_x",
+			"label": "Padding X",
+			"min": 0,
+			"max": 30,
+			"step": 1,
+			"unit": "px",
+			"default": 12,
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "header",
+			"content": "Product Options",
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "color",
+			"id": "product_option_text_color",
+			"label": "Text Color",
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_option_font_size",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"label": "Size",
+			"default": 12,
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_option_font_size_mobile",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Size",
+			"default": 12,
+
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_option_weight",
+			"label": "Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "600",
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_option_letter_spacing",
+			"label": "Letter Spacing",
+			"options": [
+				{
+					"value": "tight",
+					"label": "Tight"
+				},
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "loose",
+					"label": "Loose"
+				}
+			],
+			"default": "loose",
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "select",
+			"id": "product_option_case",
+			"label": "Case",
+			"options": [
+				{
+					"value": "none",
+					"label": "Default"
+				},
+				{
+					"value": "lowercase",
+					"label": "Lowercase"
+				},
+				{
+					"value": "uppercase",
+					"label": "Uppercase"
+				},
+				{
+					"value": "capitalize",
+					"label": "Capitalize"
+				}
+			],
+			"default": "uppercase",
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "range",
+			"id": "product_option_spacing",
+			"label": "Spacing",
+			"min": 0,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"default": 6,
+			"visible_if": "{{ block.settings.product_variant_show == true or block.settings.product_variant_mobile_show == true }}"
+		},
+		{
+			"type": "header",
+			"content": "ATC Button"
+		},
+		{
+			"type": "text",
+			"id": "product_atc_button_text",
+			"label": "Text",
+			"default": "Add to Cart"
+		},
+		{
+			"type": "color",
+			"id": "product_atc_button_text_color",
+			"label": "Text Color"
+		},
+		{
+			"type": "range",
+			"id": "product_atc_button_font_size",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"label": "Size",
+			"default": 13
+		},
+		{
+			"type": "range",
+			"id": "product_atc_button_font_size_mobile",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile Size",
+			"default": 13
+		},
+		{
+			"type": "select",
+			"id": "product_atc_button_weight",
+			"label": "Weight",
+			"options": [
+				{
+					"value": "100",
+					"label": "Thin"
+				},
+				{
+					"value": "300",
+					"label": "Light"
+				},
+				{
+					"value": "400",
+					"label": "Regular"
+				},
+				{
+					"value": "500",
+					"label": "Medium"
+				},
+				{
+					"value": "600",
+					"label": "Semibold"
+				},
+				{
+					"value": "700",
+					"label": "Bold"
+				},
+				{
+					"value": "900",
+					"label": "Black"
+				}
+			],
+			"default": "500"
+		},
+		{
+			"type": "select",
+			"id": "product_atc_button_letter_spacing",
+			"label": "Letter Spacing",
+			"options": [
+				{
+					"value": "tight",
+					"label": "Tight"
+				},
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "loose",
+					"label": "Loose"
+				}
+			],
+			"default": "normal"
+		},
+		{
+			"type": "select",
+			"id": "product_atc_button_case",
+			"label": "Case",
+			"options": [
+				{
+					"value": "none",
+					"label": "Default"
+				},
+				{
+					"value": "lowercase",
+					"label": "Lowercase"
+				},
+				{
+					"value": "uppercase",
+					"label": "Uppercase"
+				},
+				{
+					"value": "capitalize",
+					"label": "Capitalize"
+				}
+			],
+			"default": "none"
+		},
+
+		{
+			"type": "select",
+			"id": "product_atc_button_border",
+			"label": "Border Style",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "solid",
+					"label": "Solid"
+				},
+				{
+					"value": "dashed",
+					"label": "Dashed"
+				},
+				{
+					"value": "dotted",
+					"label": "Dotted"
+				}
+			],
+			"default": "none"
+		},
+		{
+			"type": "range",
+			"id": "product_atc_button_border_width",
+			"label": "Border Thickness",
+			"min": 1,
+			"max": 10,
+			"step": 1,
+			"unit": "px",
+			"default": 1,
+			"visible_if": "{{ block.settings.product_atc_button_border != \"none\" }}"
+		},
+		{
+			"type": "color",
+			"id": "product_atc_button_border_color",
+			"label": "Border Color",
+			"default": "#000000",
+			"visible_if": "{{ block.settings.product_atc_button_border != \"none\" }}"
+		},
+		{
+			"type": "range",
+			"id": "product_atc_button_border_radius",
+			"label": "Rounded Corners",
+			"min": 0,
+			"max": 100,
+			"step": 10,
+			"unit": "%",
+			"default": 50
+		},
+		{
+			"type": "color",
+			"id": "product_atc_button_background_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "range",
+			"id": "product_atc_button_padding_x",
+			"label": "Padding X",
+			"min": 0,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"default": 4
+		},
+		{
+			"type": "range",
+			"id": "product_atc_button_padding_y",
+			"label": "Padding Y",
+			"min": 0,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"default": 4
+		},
+		{
+			"type": "header",
+			"content": "Appearance"
+		},
+		{
+			"type": "color",
+			"id": "background_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "range",
+			"id": "border_radius",
+			"label": "Rounded Corners",
+			"min": 0,
+			"max": 100,
+			"step": 10,
+			"unit": "%",
+			"default": 50
+		},
+		{
+			"type": "header",
+			"content": "Margin"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"label": "Top",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"label": "Bottom",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_top_mobile",
+			"label": "Mobile Top",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom_mobile",
+			"label": "Mobile Bottom",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "header",
+			"content": "Padding"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"label": "Top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"label": "Bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_left",
+			"label": "Left",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_right",
+			"label": "Right",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"label": "Mobile Top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"label": "Mobile Bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_left_mobile",
+			"label": "Mobile Left",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_right_mobile",
+			"label": "Mobile Right",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 0
+		},
+		{
+			"type": "header",
+			"content": "Custom"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Class",
+
+			"info": "You can use this class to add custom styles to the button. Multiple classes can be added by separating them with a space."
+		}
+	],
+	"presets": [
+		{
+			"name": "Drawer Upsell Carousel",
+			"category": "PagePilot"
+		}
+	]
+}
+{% endschema %}
