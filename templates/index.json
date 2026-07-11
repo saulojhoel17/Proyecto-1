@@ -15,7 +15,7 @@
         "text_daBi8i": {
           "type": "text",
           "settings": {
-            "text": "<h2>¿Piel cansada y sin firmeza? Recupera tu rostro esculpido y radiante.</h2>",
+            "text": "<p>Estilo femenino refinado, pensado para cada instante.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -40,7 +40,7 @@
         "text_BGitqN": {
           "type": "text",
           "settings": {
-            "text": "<p>Tecnología de microcorriente avanzada para un lifting natural desde casa.</p>",
+            "text": "<p><strong>Dispositivo de Microcorriente Facial</strong><br/>Una selección íntima de piezas de lujo discreto, con líneas limpias, materiales excepcionales y un detalle que habla por sí solo.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -66,7 +66,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Descubre tu ritual Vénika",
+            "label": "Explorar Colección.",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -90,6 +90,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
+        "image_1": "shopify://shop_images/pagepilot-product-image-1782072045118-we2h5g6we.jpg",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
