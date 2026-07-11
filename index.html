@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Nova | Boutique Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark">N</div>
+        <div>
+          <p class="eyebrow">Boutique online</p>
+          <h1>Tienda Nova</h1>
+        </div>
+      </div>
+      <nav class="topnav" aria-label="Categorías principales">
+        <button class="tab active" data-category="novedades">Novedades</button>
+        <button class="tab" data-category="esenciales">Esenciales</button>
+        <button class="tab" data-category="cuidado">Cuidado de la Piel</button>
+      </nav>
+    </header>
+
+    <main class="app-shell">
+      <section class="hero-panel">
+        <div class="hero-copy-block">
+          <p class="eyebrow">Colección de edición limitada</p>
+          <h2>Estilo femenino refinado, pensado para cada instante.</h2>
+          <p class="hero-copy">
+            Una selección íntima de piezas de lujo discreto, con líneas limpias,
+            materiales excepcionales y un detalle que habla por sí solo.
+          </p>
+          <a class="primary-btn" href="#productos">Explorar Colección</a>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-badge">Elegancia atemporal</div>
+          <div class="hero-glow"></div>
+        </div>
+      </section>
+
+      <section id="productos" class="catalog-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Selección editada</p>
+            <h3 id="catalog-title">Novedades</h3>
+          </div>
+          <p>Diseños curados con una estética minimalista y sofisticada.</p>
+        </div>
+
+        <div id="product-grid" class="product-grid"></div>
+      </section>
+    </main>
+
+    <aside id="carrito" class="cart-panel">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Tu carrito</p>
+          <h3>Resumen de compra</h3>
+        </div>
+        <span id="cart-count" class="pill">0</span>
+      </div>
+
+      <div id="cart-items" class="cart-items">
+        <p class="empty-cart">Tu selección aún está vacía.</p>
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Total</span>
+          <strong id="cart-total">$0.00</strong>
+        </div>
+        <button class="checkout-btn">Finalizar compra</button>
+      </div>
+    </aside>
+
+    <div id="quick-view-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="true"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" data-close-modal="true" aria-label="Cerrar">×</button>
+        <div class="modal-gallery">
+          <div id="modal-visual" class="modal-visual"></div>
+          <div id="modal-thumbnails" class="thumbnail-row"></div>
+        </div>
+        <div class="modal-details">
+          <p class="eyebrow">Vista rápida</p>
+          <h3 id="modal-title"></h3>
+          <p id="modal-description" class="modal-description"></p>
+          <ul id="modal-benefits" class="benefits-list"></ul>
+          <div class="modal-actions">
+            <label class="quantity-picker" for="modal-quantity">
+              Cantidad
+              <select id="modal-quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </label>
+            <button id="modal-add-btn" class="primary-btn">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
