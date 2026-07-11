@@ -1,0 +1,65 @@
+{% comment %} Quiet Luxury custom section - place on a page template {% endcomment %}
+<style>
+  /* Prevent duplicate loads if theme already includes these */
+</style>
+<div class="quiet-luxury-root quiet-luxury-section">
+  <header class="quiet-topbar">
+    <div class="quiet-brand">
+      <div class="quiet-brand-mark">N</div>
+      <div>
+        <p class="quiet-eyebrow">Boutique</p>
+        <h1>Tienda Nova</h1>
+      </div>
+    </div>
+    <nav class="quiet-tabs" role="navigation">
+      <button class="quiet-tab" data-category="novedades">Novedades</button>
+      <button class="quiet-tab" data-category="esenciales">Esenciales</button>
+      <button class="quiet-tab" data-category="cuidado">Cuidado de la Piel</button>
+    </nav>
+  </header>
+
+  <main class="quiet-hero">
+    <div class="quiet-hero-copy">
+      <p class="quiet-eyebrow">Colección seleccionada</p>
+      <h2>Estilo femenino de presencia serena</h2>
+      <p class="quiet-p">Una selección de piezas que comunican elegancia sin esfuerzo.</p>
+      <a class="quiet-primary" href="#">Explorar Colección</a>
+    </div>
+    <div class="quiet-hero-side"></div>
+  </main>
+
+  <section class="quiet-catalog">
+    <div class="quiet-section-heading">
+      <div>
+        <p class="quiet-eyebrow">Selección</p>
+        <h3 class="quiet-catalog-title">Novedades</h3>
+      </div>
+      <p class="quiet-note">Diseños cuidadosamente curados.</p>
+    </div>
+
+    <div class="quiet-grid" aria-live="polite"></div>
+  </section>
+
+  <div class="quiet-modal hidden" style="display:none;">
+    <div class="quiet-modal-backdrop" data-close></div>
+    <div class="quiet-modal-card">
+      <button class="quiet-modal-close" data-close>×</button>
+      <h3 class="quiet-modal-title"></h3>
+      <p class="quiet-modal-desc"></p>
+      <button data-close>Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Load assets specifically for this section -->
+<link rel="stylesheet" href="{{ 'quiet-luxury.css' | asset_url }}">
+<script src="{{ 'quiet-luxury.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Quiet Luxury - Custom Page",
+  "settings": [],
+  "blocks": [],
+  "presets": [{ "name": "Quiet Luxury (custom)" }]
+}
+{% endschema %}
