@@ -210,6 +210,17 @@
     <div id="product-grid" class="product-grid"></div>
   </section>
 
+  {% comment %}
+    AVISO: la sección "catalog-section" de arriba (#productos) es una
+    maqueta con productos y precios inventados en JS (const products = [...]).
+    No está conectada a Shopify: su carrito y botón "Finalizar compra" son
+    decorativos y no generan pedidos reales. El bloque de abajo SÍ es real,
+    jala productos/precio/stock en vivo desde Shopify y envía al carrito
+    real vía /cart/add. Pendiente de decisión: retirar o reconstruir la
+    maqueta de arriba una vez validado este bloque.
+  {% endcomment %}
+  {% render 'home-productos-destacados' %}
+
   <div id="quick-view-modal" class="modal hidden" aria-hidden="true">
     <div class="modal-backdrop" data-close-modal="true"></div>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
