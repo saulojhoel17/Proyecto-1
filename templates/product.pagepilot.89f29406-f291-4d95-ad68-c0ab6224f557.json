@@ -16,8 +16,7 @@
     "section_1771340807807_3rkbixvgo",
     "section_1771341922789_n9jf6jsr7",
     "section_1771342932017_1qge6vkjv",
-    "section_1775650262888_z90l3358o",
-    "shopify_sandalias_emi_landing_Lp6z6E"
+    "section_1775650262888_z90l3358o"
   ],
   "sections": {
     "main": {
@@ -5083,11 +5082,6 @@
         "margin_bottom_mobile": 0,
         "custom_class": ""
       }
-    },
-    "shopify_sandalias_emi_landing_Lp6z6E": {
-      "type": "shopify-sandalias-emi-landing",
-      "name": "Landing Sandalias Emi",
-      "settings": {}
     }
   }
 }
