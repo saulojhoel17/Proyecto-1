@@ -1,0 +1,451 @@
+{% assign product_title = product.title | default: 'Sandalias Semiortopedicas Emi' %}
+{% assign product_image = product.featured_image | default: '' %}
+
+<section class="emi-landing-shell" aria-label="Landing page de {{ product_title }}">
+  <div class="emi-urgency-banner">
+    <span>🚚 Envío GRATIS a todo el país</span>
+    <span>🏠 Paga al recibir en efectivo</span>
+  </div>
+
+  <div class="emi-hero-card">
+    <div class="emi-product-copy">
+      <p class="emi-kicker">Compra segura • COD en Ecuador</p>
+      <h2>{{ product_title }}</h2>
+      <p class="emi-description">
+        Sandalias semiortopédicas con diseño cómodo, liviano y elegante para uso diario. Ideal para quienes buscan confort sin renunciar a estilo.
+      </p>
+      <ul class="emi-bullets">
+        <li>✅ Entrega rápida en todo Ecuador</li>
+        <li>✅ Pago contra entrega en efectivo</li>
+        <li>✅ Envío seguro y cuidado en el empaque</li>
+      </ul>
+    </div>
+
+    <div class="emi-form-card">
+      <h3>¡Reserva tu par hoy!</h3>
+      <p class="emi-form-subtitle">Completa tus datos y te confirmamos tu pedido de forma rápida.</p>
+
+      <form class="emi-form" id="emi-cod-form">
+        <div class="emi-field-group">
+          <label for="emi-name">Nombre y Apellido *</label>
+          <input id="emi-name" name="name" type="text" placeholder="Ej. María López" required>
+        </div>
+
+        <div class="emi-field-group">
+          <label for="emi-phone">Teléfono de contacto *</label>
+          <input id="emi-phone" name="phone" type="tel" placeholder="Ej. 0991234567" required>
+        </div>
+
+        <div class="emi-field-group">
+          <label for="emi-city">Ciudad / Provincia *</label>
+          <input id="emi-city" name="city" type="text" placeholder="Ej. Quito / Pichincha" required>
+        </div>
+
+        <div class="emi-field-group">
+          <label for="emi-address">Dirección exacta y referencias *</label>
+          <textarea id="emi-address" name="address" rows="3" placeholder="Ej. Av. Principal 123, casa azul, frente al parque" required></textarea>
+        </div>
+
+        <div class="emi-grid-2">
+          <div class="emi-field-group">
+            <label for="emi-color">Color *</label>
+            <select id="emi-color" name="color" required>
+              <option value="">Selecciona</option>
+              <option value="Blancas">Blancas</option>
+              <option value="Negras">Negras</option>
+              <option value="Beige">Beige</option>
+            </select>
+          </div>
+
+          <div class="emi-field-group">
+            <label for="emi-size">Talla *</label>
+            <select id="emi-size" name="size" required>
+              <option value="">Selecciona</option>
+              {% for size in (34..42) %}
+                <option value="{{ size }}">{{ size }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="emi-submit-btn">
+          ¡COMPRAR AHORA Y PAGAR AL RECIBIR!
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="emi-benefits-card">
+    <div class="emi-benefits-copy">
+      <p class="emi-kicker">Por qué las clientes lo eligen</p>
+      <h3>Confort, estilo y calidad en cada paso</h3>
+      <div class="emi-benefits-list">
+        <div class="emi-benefit-item">✨ Plantilla cómoda y súper cómodas</div>
+        <div class="emi-benefit-item">🪶 Livianas y fáciles de combinar con cualquier outfit</div>
+        <div class="emi-benefit-item">🌟 Herrajes y detalles decorativos premium</div>
+        <div class="emi-benefit-item">⭐ Calidad garantizada</div>
+      </div>
+    </div>
+
+    <div class="emi-size-card">
+      <div class="emi-size-header">
+        <h4>Guía de tallas</h4>
+        <button type="button" class="emi-size-trigger" data-modal-open>Ver guía de tallas</button>
+      </div>
+      <p>Consulta la guía rápida para elegir tu talla ideal en Ecuador.</p>
+    </div>
+  </div>
+
+  <div class="emi-modal" id="emi-size-modal" aria-hidden="true">
+    <div class="emi-modal-backdrop" data-modal-close></div>
+    <div class="emi-modal-panel" role="dialog" aria-modal="true" aria-labelledby="emi-modal-title">
+      <button class="emi-modal-close" type="button" data-modal-close aria-label="Cerrar guía de tallas">×</button>
+      <h4 id="emi-modal-title">Guía de tallas Ecuador</h4>
+      <p>Recomendación general para elegir la talla correcta.</p>
+      <div class="emi-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Talla</th>
+              <th>Medida aproximada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>34</td><td>22–23 cm</td></tr>
+            <tr><td>35</td><td>23–24 cm</td></tr>
+            <tr><td>36</td><td>24–25 cm</td></tr>
+            <tr><td>37</td><td>25–26 cm</td></tr>
+            <tr><td>38</td><td>26–27 cm</td></tr>
+            <tr><td>39</td><td>27–28 cm</td></tr>
+            <tr><td>40</td><td>28–29 cm</td></tr>
+            <tr><td>41</td><td>29–30 cm</td></tr>
+            <tr><td>42</td><td>30–31 cm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="emi-modal-note">Si tienes duda entre dos tallas, te recomendamos elegir la más cómoda para uso diario.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .emi-landing-shell {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1f2937;
+    line-height: 1.5;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  .emi-urgency-banner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #f59e0b, #fb923c);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+    margin-bottom: 16px;
+  }
+
+  .emi-hero-card {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .emi-product-copy,
+  .emi-form-card,
+  .emi-benefits-card {
+    background: #fff;
+    border: 1px solid #ece7e1;
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(17, 24, 39, 0.06);
+  }
+
+  .emi-product-copy {
+    padding: 24px;
+  }
+
+  .emi-kicker {
+    color: #8b5e3c;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .emi-product-copy h2,
+  .emi-form-card h3,
+  .emi-benefits-copy h3,
+  .emi-modal-panel h4 {
+    font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+    margin: 0 0 10px;
+    color: #111827;
+  }
+
+  .emi-description,
+  .emi-form-subtitle,
+  .emi-size-card p,
+  .emi-modal-note {
+    color: #6b7280;
+    margin: 0 0 12px;
+  }
+
+  .emi-bullets {
+    padding-left: 18px;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+    color: #374151;
+  }
+
+  .emi-form-card {
+    padding: 22px;
+  }
+
+  .emi-form {
+    display: grid;
+    gap: 12px;
+  }
+
+  .emi-field-group {
+    display: grid;
+    gap: 6px;
+  }
+
+  .emi-field-group label {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #374151;
+  }
+
+  .emi-field-group input,
+  .emi-field-group textarea,
+  .emi-field-group select {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    background: #fcfcfd;
+  }
+
+  .emi-field-group textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .emi-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .emi-submit-btn {
+    border: 0;
+    padding: 15px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, #0f766e, #14b8a6);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(20, 184, 166, 0.24);
+    transition: transform 0.2s ease;
+  }
+
+  .emi-submit-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .emi-benefits-card {
+    margin-top: 16px;
+    padding: 22px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 16px;
+  }
+
+  .emi-benefits-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .emi-benefit-item {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #f9fafb;
+    color: #374151;
+    font-weight: 600;
+  }
+
+  .emi-size-card {
+    background: linear-gradient(135deg, #fef3c7, #fff7ed);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .emi-size-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .emi-size-trigger {
+    border: 0;
+    background: #111827;
+    color: #fff;
+    padding: 9px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .emi-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .emi-modal[aria-hidden="false"] {
+    display: flex;
+  }
+
+  .emi-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.6);
+  }
+
+  .emi-modal-panel {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+  }
+
+  .emi-modal-close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    border: 0;
+    background: #f3f4f6;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  .emi-table-wrap {
+    overflow-x: auto;
+    margin: 12px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  th {
+    background: #f9fafb;
+  }
+
+  @media (max-width: 860px) {
+    .emi-hero-card,
+    .emi-benefits-card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .emi-landing-shell {
+      padding: 10px;
+    }
+
+    .emi-urgency-banner {
+      border-radius: 16px;
+      justify-content: flex-start;
+      font-size: 0.9rem;
+    }
+
+    .emi-grid-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .emi-size-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('emi-cod-form');
+    const modal = document.getElementById('emi-size-modal');
+    const modalOpen = document.querySelector('[data-modal-open]');
+    const modalClose = document.querySelectorAll('[data-modal-close]');
+
+    if (form) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        if (button) {
+          button.textContent = '¡Pedido recibido!';
+          button.disabled = true;
+        }
+        const name = form.querySelector('#emi-name').value.trim();
+        window.alert('Gracias ' + (name || 'cliente') + ', tu pedido será confirmado para pago contra entrega.');
+      });
+    }
+
+    if (modalOpen) {
+      modalOpen.addEventListener('click', function () {
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    }
+
+    modalClose.forEach(function (element) {
+      element.addEventListener('click', function () {
+        modal.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    if (modal) {
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  });
+</script>
